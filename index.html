@@ -18,6 +18,33 @@
         </main>
     </div>
 
+    <!-- Bot Modal -->
+    <div class="modal hidden" id="botModal">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <div class="modal__bot-info">
+                    <span class="modal__bot-icon" id="modalBotIcon"></span>
+                    <h2 class="modal__bot-name" id="modalBotName"></h2>
+                </div>
+                <button class="modal__close-button" id="modalCloseButton" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal__body">
+                <p class="modal__message" id="modalMessage"></p>
+            </div>
+            <div class="modal__footer">
+                <button class="btn btn--primary btn--full-width" id="modalContinueButton">
+                    Start Conversation
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
