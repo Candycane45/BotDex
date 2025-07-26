@@ -6,7 +6,7 @@ const botsData = {
       "name": "CyberGuard Bot",
       "title": "Cyber Security Assistant",
       "description": "Analyzes and improves your cyber hygiene practices",
-      "icon": "🛡️",
+      "icon": "assets/shield.png",
       "color": "#e74c3c"
     },
     {
@@ -63,25 +63,60 @@ const botsData = {
 // Modal elements - will be initialized after DOM loads
 let modal, modalBackdrop, modalCloseButton, modalBotIcon, modalBotName, modalMessage, modalContinueButton;
 
-// Bot messages data
+// Bot messages data with PNG icons
 const botMessages = {
-    1: "🛡️ CyberGuard Bot activated!\n\nI'm ready to analyze your digital security and help improve your cyber hygiene. I can check your passwords, review your privacy settings, and guide you through securing your online accounts.\n\nWhat would you like to secure today?",
-    2: "🦉 Wise Advisor Bot here!\n\nI'm ready to provide thoughtful guidance for any life decisions or challenges you're facing. Whether it's career advice, relationship guidance, or personal growth strategies, I'm here to help.\n\nWhat's on your mind?",
-    3: "💙 Empathy Bot listening...\n\nI'm here to understand and support you through whatever you're experiencing. I offer a safe space where you can share your feelings without judgment.\n\nPlease tell me what's on your heart today.",
-    4: "🔥 Roast Master Bot locked and loaded!\n\nReady to deliver some witty burns and playful roasts! I'll keep it fun and clever while giving you the comedic reality check you're looking for.\n\nWhat do you want me to roast?",
-    5: "⚡ Energy Mirror Bot syncing to your vibe!\n\nI'll match whatever energy you bring - whether you're excited, chill, frustrated, or anything in between. I adapt to your mood perfectly.\n\nWhat's your current energy level?",
-    6: "🧘 Zen Bot in peaceful mode...\n\nI'm here to help you find calm and inner peace. Through guided breathing, mindfulness techniques, and gentle wisdom, we'll work together to center your mind.\n\nTake a deep breath and tell me what's causing you stress.",
-    7: "😂 Meme Lord Bot reporting for duty!\n\nReady to respond with the perfect memes for any situation! Whether you need reaction memes, wholesome content, or something to make you laugh, I've got the perfect meme for every mood.\n\nWhat's happening that needs meme treatment?"
+    1: `CyberGuard Bot activated!
+
+I'm ready to analyze your digital security and help improve your cyber hygiene. I can check your passwords, review your privacy settings, and guide you through securing your online accounts.
+
+What would you like to secure today?`,
+
+    2: `<img src="images/icons/advisor.png" alt="Wise Advisor Bot" class="bot-message-icon"> Wise Advisor Bot here!
+
+I'm ready to provide thoughtful guidance for any life decisions or challenges you're facing. Whether it's career advice, relationship guidance, or personal growth strategies, I'm here to help.
+
+What's on your mind?`,
+
+    3: `<img src="images/icons/empathyicon"> Empathy Bot listening...
+
+I'm here to understand and support you through whatever you're experiencing. I offer a safe space where you can share your feelings without judgment.
+
+Please tell me what's on your heart today.`,
+
+    4: `<img src="images/icons/roast.png" alt="Roast Master Bot" class="bot-message-icon"> Roast Master Bot locked and loaded!
+
+Ready to deliver some witty burns and playful roasts! I'll keep it fun and clever while giving you the comedic reality check you're looking for.
+
+What do you want me to roast?`,
+
+    5: `<img src="images/icons/energy.png" alt="Energy Mirror Bot" class="bot-message-icon"> Energy Mirror Bot syncing to your vibe!
+
+I'll match whatever energy you bring - whether you're excited, chill, frustrated, or anything in between. I adapt to your mood perfectly.
+
+What's your current energy level?`,
+
+    6: `<img src="images/icons/zen.png" alt="Zen Bot" class="bot-message-icon"> Zen Bot in peaceful mode...
+
+I'm here to help you find calm and inner peace. Through guided breathing, mindfulness techniques, and gentle wisdom, we'll work together to center your mind.
+
+Take a deep breath and tell me what's causing you stress.`,
+
+    7: `<img src="images/icons/meme.png" alt="Meme Lord Bot" class="bot-message-icon"> Meme Lord Bot reporting for duty!
+
+Ready to respond with the perfect memes for any situation! Whether you need reaction memes, wholesome content, or something to make you laugh, I've got the perfect meme for every mood.
+
+What's happening that needs meme treatment?`
 };
 
-// Function to create a bot card
+
+// Function to create a bot car
 function createBotCard(bot) {
     const card = document.createElement('div');
     card.className = 'bot-card';
     card.setAttribute('data-bot-id', bot.id);
     
     card.innerHTML = `
-        <span class="bot-icon">${bot.icon}</span>
+        <img src="${bot.icon}" alt="${bot.name}" class="bot-icon">
         <h3 class="bot-name">${bot.name}</h3>
         <p class="bot-title">${bot.title}</p>
         <p class="bot-description">${bot.description}</p>
@@ -92,6 +127,7 @@ function createBotCard(bot) {
     
     return card;
 }
+
 
 // Function to open the modal
 function openModal(botId, botName, botIcon, message) {
