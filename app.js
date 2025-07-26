@@ -60,6 +60,20 @@ const botsData = {
   ]
 };
 
+// Modal elements - will be initialized after DOM loads
+let modal, modalBackdrop, modalCloseButton, modalBotIcon, modalBotName, modalMessage, modalContinueButton;
+
+// Bot messages data
+const botMessages = {
+    1: "🛡️ CyberGuard Bot activated!\n\nI'm ready to analyze your digital security and help improve your cyber hygiene. I can check your passwords, review your privacy settings, and guide you through securing your online accounts.\n\nWhat would you like to secure today?",
+    2: "🦉 Wise Advisor Bot here!\n\nI'm ready to provide thoughtful guidance for any life decisions or challenges you're facing. Whether it's career advice, relationship guidance, or personal growth strategies, I'm here to help.\n\nWhat's on your mind?",
+    3: "💙 Empathy Bot listening...\n\nI'm here to understand and support you through whatever you're experiencing. I offer a safe space where you can share your feelings without judgment.\n\nPlease tell me what's on your heart today.",
+    4: "🔥 Roast Master Bot locked and loaded!\n\nReady to deliver some witty burns and playful roasts! I'll keep it fun and clever while giving you the comedic reality check you're looking for.\n\nWhat do you want me to roast?",
+    5: "⚡ Energy Mirror Bot syncing to your vibe!\n\nI'll match whatever energy you bring - whether you're excited, chill, frustrated, or anything in between. I adapt to your mood perfectly.\n\nWhat's your current energy level?",
+    6: "🧘 Zen Bot in peaceful mode...\n\nI'm here to help you find calm and inner peace. Through guided breathing, mindfulness techniques, and gentle wisdom, we'll work together to center your mind.\n\nTake a deep breath and tell me what's causing you stress.",
+    7: "😂 Meme Lord Bot reporting for duty!\n\nReady to respond with the perfect memes for any situation! Whether you need reaction memes, wholesome content, or something to make you laugh, I've got the perfect meme for every mood.\n\nWhat's happening that needs meme treatment?"
+};
+
 // Function to create a bot card
 function createBotCard(bot) {
     const card = document.createElement('div');
@@ -79,20 +93,39 @@ function createBotCard(bot) {
     return card;
 }
 
-// Function to render all bot cards
-function renderBotCards() {
-    const botGrid = document.getElementById('botGrid');
+// Function to open the modal
+function openModal(botId, botName, botIcon, message) {
+    if (!modal) {
+        console.error('Modal not initialized');
+        return;
+    }
     
-    botsData.bots.forEach(bot => {
-        const botCard = createBotCard(bot);
-        botGrid.appendChild(botCard);
-    });
+    modalBotIcon.textContent = botIcon;
+    modalBotName.textContent = botName;
+    modalMessage.textContent = message;
     
-    // Add click event listeners to all bot buttons after rendering
-    const botButtons = document.querySelectorAll('.bot-button');
-    botButtons.forEach(button => {
-        button.addEventListener('click', handleBotButtonClick);
-    });
+    modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        modalCloseButton.focus();
+    }, 100);
+}
+
+// Function to close the modal
+function closeModal() {
+    if (!modal) return;
+    
+    modal.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+}
+
+// Function to handle keyboard events
+function handleKeydown(event) {
+    if (event.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeModal();
+    }
 }
 
 // Function to handle bot button clicks
@@ -101,20 +134,19 @@ function handleBotButtonClick(event) {
     const botId = parseInt(button.getAttribute('data-bot-id'));
     const botName = button.getAttribute('data-bot-name');
     
+    console.log(`Button clicked for bot: ${botName} (ID: ${botId})`);
+    
     // Prevent any default behavior
     event.preventDefault();
     event.stopPropagation();
     
-    // Get bot-specific messages
-    const botMessages = {
-        1: "🛡️ CyberGuard Bot activated!\n\nI'm ready to analyze your digital security and help improve your cyber hygiene. I can check your passwords, review your privacy settings, and guide you through securing your online accounts.\n\nWhat would you like to secure today?",
-        2: "🦉 Wise Advisor Bot here!\n\nI'm ready to provide thoughtful guidance for any life decisions or challenges you're facing. Whether it's career advice, relationship guidance, or personal growth strategies, I'm here to help.\n\nWhat's on your mind?",
-        3: "💙 Empathy Bot listening...\n\nI'm here to understand and support you through whatever you're experiencing. I offer a safe space where you can share your feelings without judgment.\n\nPlease tell me what's on your heart today.",
-        4: "🔥 Roast Master Bot locked and loaded!\n\nReady to deliver some witty burns and playful roasts! I'll keep it fun and clever while giving you the comedic reality check you're looking for.\n\nWhat do you want me to roast?",
-        5: "⚡ Energy Mirror Bot syncing to your vibe!\n\nI'll match whatever energy you bring - whether you're excited, chill, frustrated, or anything in between. I adapt to your mood perfectly.\n\nWhat's your current energy level?",
-        6: "🧘 Zen Bot in peaceful mode...\n\nI'm here to help you find calm and inner peace. Through guided breathing, mindfulness techniques, and gentle wisdom, we'll work together to center your mind.\n\nTake a deep breath and tell me what's causing you stress.",
-        7: "😂 Meme Lord Bot reporting for duty!\n\nReady to respond with the perfect memes for any situation! Whether you need reaction memes, wholesome content, or something to make you laugh, I've got the perfect meme for every mood.\n\nWhat's happening that needs meme treatment?"
-    };
+    // Find the bot data
+    const bot = botsData.bots.find(b => b.id === botId);
+    
+    if (!bot) {
+        console.error(`Bot not found for ID: ${botId}`);
+        return;
+    }
     
     const message = botMessages[botId] || `Hello! You've chosen to chat with ${botName}. This is a demo - the actual chat functionality would be implemented here.`;
     
@@ -122,9 +154,9 @@ function handleBotButtonClick(event) {
     button.style.transform = 'scale(0.95)';
     button.style.opacity = '0.8';
     
-    // Show alert with bot-specific message
+    // Open modal
     setTimeout(() => {
-        alert(message);
+        openModal(botId, botName, bot.icon, message);
         
         // Reset button appearance
         button.style.transform = '';
@@ -133,6 +165,56 @@ function handleBotButtonClick(event) {
     
     // Log the interaction
     console.log(`User initiated chat with ${botName} (ID: ${botId})`);
+}
+
+// Function to initialize modal elements and event listeners
+function initializeModal() {
+    modal = document.getElementById('botModal');
+    modalBackdrop = modal.querySelector('.modal__backdrop');
+    modalCloseButton = document.getElementById('modalCloseButton');
+    modalBotIcon = document.getElementById('modalBotIcon');
+    modalBotName = document.getElementById('modalBotName');
+    modalMessage = document.getElementById('modalMessage');
+    modalContinueButton = document.getElementById('modalContinueButton');
+
+    if (!modal || !modalBackdrop || !modalCloseButton) {
+        console.error('Modal elements not found');
+        return;
+    }
+
+    // Add event listeners for closing the modal
+    modalCloseButton.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+    modalContinueButton.addEventListener('click', closeModal);
+
+    // Add keyboard event listener for Escape key
+    document.addEventListener('keydown', handleKeydown);
+    
+    console.log('Modal initialized successfully');
+}
+
+// Function to render all bot cards
+function renderBotCards() {
+    const botGrid = document.getElementById('botGrid');
+    
+    if (!botGrid) {
+        console.error('Bot grid element not found');
+        return;
+    }
+    
+    botsData.bots.forEach(bot => {
+        const botCard = createBotCard(bot);
+        botGrid.appendChild(botCard);
+    });
+    
+    // Add click event listeners to all bot buttons after rendering
+    const botButtons = document.querySelectorAll('.bot-button');
+    console.log(`Found ${botButtons.length} bot buttons`);
+    
+    botButtons.forEach((button, index) => {
+        button.addEventListener('click', handleBotButtonClick);
+        console.log(`Event listener added to button ${index + 1}`);
+    });
 }
 
 // Function to add hover effects and interactions
@@ -160,7 +242,11 @@ function addInteractiveEffects() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initializing Bot Companion Dashboard...');
     
+    // Render bot cards first
     renderBotCards();
+    
+    // Initialize modal
+    initializeModal();
     
     // Add interactive effects after cards are rendered
     setTimeout(() => {
@@ -175,14 +261,14 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter' || event.key === ' ') {
         const focusedElement = document.activeElement;
-        if (focusedElement.classList.contains('bot-button')) {
+        if (focusedElement.classList.contains('bot-button') && modal && modal.classList.contains('hidden')) {
             event.preventDefault();
             focusedElement.click();
         }
     }
 });
 
-// Legacy function for compatibility (though we now use event listeners)
+// Legacy function for compatibility
 function startChatWithBot(botName, botId) {
     const button = document.querySelector(`[data-bot-id="${botId}"]`);
     if (button) {
@@ -195,5 +281,7 @@ window.botDashboard = {
     startChatWithBot,
     renderBotCards,
     botsData,
-    handleBotButtonClick
+    handleBotButtonClick,
+    openModal,
+    closeModal
 };
