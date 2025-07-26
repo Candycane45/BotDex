@@ -1124,3 +1124,29 @@ select.form-control {
 .modal-open {
     overflow: hidden;
 }
+
+/* Style for bot card icons */
+.bot-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: var(--space-16);
+    display: block;
+}
+
+/* Style for message modal icons */
+.bot-message-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* Ensure images are responsive */
+.bot-icon, .bot-message-icon {
+    max-width: 100%;
+    height: auto;
+}
+
