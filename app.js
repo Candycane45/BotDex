@@ -71,37 +71,37 @@ I'm ready to analyze your digital security and help improve your cyber hygiene. 
 
 What would you like to secure today?`,
 
-    2: `<img src="images/icons/advisor.png" alt="Wise Advisor Bot" class="bot-message-icon"> Wise Advisor Bot here!
+    2: `Wise Advisor Bot here!
 
 I'm ready to provide thoughtful guidance for any life decisions or challenges you're facing. Whether it's career advice, relationship guidance, or personal growth strategies, I'm here to help.
 
 What's on your mind?`,
 
-    3: `<img src="images/icons/empathyicon"> Empathy Bot listening...
+    3: `Empathy Bot listening...
 
 I'm here to understand and support you through whatever you're experiencing. I offer a safe space where you can share your feelings without judgment.
 
 Please tell me what's on your heart today.`,
 
-    4: `<img src="images/icons/roast.png" alt="Roast Master Bot" class="bot-message-icon"> Roast Master Bot locked and loaded!
+    4: `class="bot-message-icon"> Roast Master Bot locked and loaded!
 
 Ready to deliver some witty burns and playful roasts! I'll keep it fun and clever while giving you the comedic reality check you're looking for.
 
 What do you want me to roast?`,
 
-    5: `<img src="images/icons/energy.png" alt="Energy Mirror Bot" class="bot-message-icon"> Energy Mirror Bot syncing to your vibe!
+    5: `Energy Mirror Bot syncing to your vibe!
 
 I'll match whatever energy you bring - whether you're excited, chill, frustrated, or anything in between. I adapt to your mood perfectly.
 
 What's your current energy level?`,
 
-    6: `<img src="images/icons/zen.png" alt="Zen Bot" class="bot-message-icon"> Zen Bot in peaceful mode...
+    6: `Zen Bot in peaceful mode...
 
 I'm here to help you find calm and inner peace. Through guided breathing, mindfulness techniques, and gentle wisdom, we'll work together to center your mind.
 
 Take a deep breath and tell me what's causing you stress.`,
 
-    7: `<img src="images/icons/meme.png" alt="Meme Lord Bot" class="bot-message-icon"> Meme Lord Bot reporting for duty!
+    7: `Meme Lord Bot reporting for duty!
 
 Ready to respond with the perfect memes for any situation! Whether you need reaction memes, wholesome content, or something to make you laugh, I've got the perfect meme for every mood.
 
