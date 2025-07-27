@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Bot Companion Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pricing.css">
+</head>
+<body class="cyberpunk-theme">
+    <canvas id="cyberCanvas"></canvas>
+
+    <header class="site-header">
+        <div class="header-container">
+            <nav class="nav-left" aria-label="Primary navigation">
+                <a href="index.html" class="nav-link">Product</a>
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="pricing.html" class="nav-link active">Pricing</a>
+            </nav>
+            <a href="index.html" class="logo-text" aria-label="BotDex home">
+                🤖 <span>BotDex</span>
+            </a>
+            <nav class="nav-right" aria-label="User navigation">
+                <a href="#" class="nav-link">Log In</a>
+                <button class="btn btn--primary">Get Started</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container pricing-container">
+        <header class="header">
+            <h1>Data Plans & Pricing</h1>
+            <p>Choose your access level. Connect to the network.</p>
+        </header>
+
+        <main class="pricing-grid">
+            <!-- Tier 1: Free -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Free Tier</h3>
+                    <p class="price"><span>$0</span>/month</p>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check">✓</span> Access to 3 Standard Bots</li>
+                    <li><span class="check">✓</span> 1,000 Messages/Month</li>
+                    <li><span class="check">✓</span> Standard Community Support</li>
+                    <li><span class="cross">✗</span> No Conversation History</li>
+                    <li><span class="cross">✗</span> No Advanced AI Models</li>
+                </ul>
+                <button class="btn-select-plan">Select Plan</button>
+            </div>
+
+            <!-- Tier 2: Pro (Recommended) -->
+            <div class="pricing-card recommended">
+                <div class="recommended-badge">Recommended</div>
+                <div class="card-header">
+                    <h3>Pro Tier</h3>
+                    <p class="price"><span>$15</span>/month</p>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check">✓</span> Access to All 7 Bots</li>
+                    <li><span class="check">✓</span> 20,000 Messages/Month</li>
+                    <li><span class="check">✓</span> Priority Email Support</li>
+                    <li><span class="check">✓</span> 30-Day Conversation History</li>
+                    <li><span class="check">✓</span> Access to Advanced AI Models</li>
+                </ul>
+                <button class="btn-select-plan">Select Plan</button>
+            </div>
+
+            <!-- Tier 3: Enterprise -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Enterprise</h3>
+                    <p class="price"><span>Custom</span></p>
+                </div>
+                <ul class="features-list">
+                    <li><span class="check">✓</span> Unlimited Bots & Messages</li>
+                    <li><span class="check">✓</span> Dedicated 24/7 Support</li>
+                    <li><span class="check">✓</span> Unlimited Conversation History</li>
+                    <li><span class="check">✓</span> On-Premise Deployment Options</li>
+                    <li><span class="check">✓</span> Custom Bot Development</li>
+                </ul>
+                <button class="btn-select-plan">Contact Sales</button>
+            </div>
+        </main>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
+<script src="fog-bg.js"></script>
+</body>
+</html>
