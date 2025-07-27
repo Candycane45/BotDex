@@ -1383,6 +1383,7 @@ select.form-control {
   user-select: none;
   display: flex;
   align-items: center;
+  margin-right: 16%;
   gap: 0.5rem;
   text-decoration: none;
   cursor: pointer;
