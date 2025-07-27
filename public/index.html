@@ -6,15 +6,27 @@
     <title>Bot Companion Dashboard</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="hover.css" />
+    <style>
+      canvas#cyberCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+      }
+    </style>
   </head>
   <body>
+    <canvas id="cyberCanvas"></canvas>
     <header class="site-header">
       <div class="header-container">
         <nav class="nav-left" aria-label="Primary navigation">
           <a href="#" class="nav-link">Product</a>
-          <a href="#" class="nav-link">Solutions</a>
-          <a href="#" class="nav-link">Resources</a>
-          <a href="#" class="nav-link">Pricing</a>
+          <a href="solutions.html" class="nav-link">Solutions</a>
+          <a href="resources.html" class="nav-link">Resources</a>
+          <a href="pricing.html" class="nav-link">Pricing</a>
         </nav>
 
         <!-- Logged out UI -->
@@ -22,29 +34,76 @@
           🤖 <span>BotDex</span>
         </a>
 
-        <nav class="nav-right" aria-label="User navigation">
-          <div id="loggedOutUI">
-            <a href="/login" class="nav-link">Log In</a>
-            <button class="btn btn--primary">Get Started</button>
-          </div>
-
-          <!-- Logged in UI (hidden by default) -->
-          <div
-            id="loggedInUI"
-            style="display: none; align-items: center; gap: 10px"
-          >
-            <img
-              id="profilePic"
-              src=""
-              alt="Profile Picture"
-              style="width: 32px; height: 32px; border-radius: 50%"
-            />
-            <span id="username"></span>
-            <a href="/logout" class="nav-link">Logout</a>
-          </div>
+        <nav class="nav-right" aria-label="User navigation" id="loggedOutUI">
+          <a href="/login" class="nav-link">Log In</a>
+          <button class="btn btn--primary">Get Started</button>
         </nav>
+
+        <!-- Logged in UI (hidden by default) -->
+        <div
+          id="loggedInUI"
+          style="display: none; align-items: center; gap: 10px"
+        >
+          <img
+            id="profilePic"
+            src=""
+            alt="Profile Picture"
+            style="width: 32px; height: 32px; border-radius: 50%"
+          />
+          <span id="username"></span>
+          <a href="/logout" class="nav-link">Logout</a>
+        </div>
       </div>
     </header>
+
+    <!-- Hero section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1 class="hero-title">Your Personalized AI Companion Hub</h1>
+          <p class="hero-subtitle">
+            Engage with intelligent AI personas crafted to support your
+            well-being, career growth, and daily joy. Choose a companion that
+            fits your moment — whether it's reflection, motivation, or a quick
+            laugh.
+          </p>
+          <div class="hero-actions">
+            <a href="#botGrid" class="btn btn--primary">Explore Bots</a>
+            <a href="/login" class="btn btn--secondary">Sign In</a>
+          </div>
+        </div>
+
+        <div class="hero-bots-preview">
+          <div class="bot-preview">
+            <span class="bot-icon">🧘‍♀️</span>
+            <div>
+              <h3>MindMate</h3>
+              <p>
+                Compassionate support for mindfulness, stress, and emotional
+                balance.
+              </p>
+            </div>
+          </div>
+          <div class="bot-preview">
+            <span class="bot-icon">💼</span>
+            <div>
+              <h3>CareerCoach</h3>
+              <p>
+                Guidance on career decisions, resume tips, and professional
+                growth.
+              </p>
+            </div>
+          </div>
+          <div class="bot-preview">
+            <span class="bot-icon">😄</span>
+            <div>
+              <h3>LiteBot</h3>
+              <p>Light-hearted humor and curated memes to brighten your day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="container">
       <header class="header">
@@ -100,6 +159,8 @@
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
+    <script src="fog-bg.js"></script>
     <script src="app.js"></script>
 
     <!-- Check whether user is logged in or not -->

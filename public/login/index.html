@@ -3,20 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: sans-serif;
-        text-align: center;
-        margin-top: 100px;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
+
       .box {
-        display: inline-block;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        transition: all 0.3s ease;
       }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+      }
+
+      p {
+        margin: 10px 0;
+        color: #555;
+      }
+
+      a {
+        display: inline-block;
+        /* margin-top: 15px; */
+        text-decoration: none;
+        color: white;
+        background-color: #4285f4;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      a:hover {
+        background-color: #357ae8;
+      }
+
+      .link-secondary {
+        background: none;
+        color: #4285f4;
+        margin-top: 10px;
+        padding: 0;
+      }
+
+      .link-secondary:hover {
+        text-decoration: underline;
+        background: none;
+      }
+
       .hidden {
         display: none;
+      }
+
+      .button__login-google {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
       }
     </style>
   </head>
@@ -27,7 +93,15 @@
       <!-- Shown only if logged out -->
       <div id="login-box" class="hidden">
         <p>You are not logged in.</p>
-        <a href="/auth/google">Login with Google</a>
+        <div class="button__login-google">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+            alt="Google icon"
+            height="25px"
+            width="25px"
+          />
+          <a href="/auth/google">Login with Google</a>
+        </div>
       </div>
 
       <!-- Shown only if logged in -->
@@ -35,7 +109,7 @@
         <p>Welcome, <span id="username"></span>!</p>
         <a href="/logout">Logout</a>
         <br />
-        <a href="/">Home</a>
+        <a href="/" class="link-secondary">Go to Home</a>
       </div>
     </div>
 
@@ -51,7 +125,6 @@
 
           if (user) {
             // Logged in
-            console.log("user", user);
             usernameSpan.textContent = user.displayName;
             userBox.classList.remove("hidden");
             title.textContent = "You're logged in!";
