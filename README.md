@@ -2,6 +2,13 @@
 
 **Bot Companion Dashboard** is a full-stack web application that allows users to interact with a variety of AI-powered chatbots, each with a unique personality and purpose. The project demonstrates a modern web development architecture, separating the user interface (frontend) from the AI logic and API management (backend). This version includes Google Authentication using Passport.js.
 
+## Roles and Responsibilities
+- Back-end Development
+  Hemanth and Roshan worked on the          chatbots and API
+- Front-end Development
+  Cindy and Alex focused on the framework   building the skeleton and the idea        pitching.
+  Harshitha focused on the css and the
+  flashy aesthetics.
 ## Features
 
 * **Multiple AI Personalities**: Users can choose from 7 different AI bots, including a cybersecurity advisor, an empathetic listener, a witty roaster, and more.
