@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bot Companion Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="hover.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <nav class="nav-left" aria-label="Primary navigation">
+          <a href="#" class="nav-link">Product</a>
+          <a href="#" class="nav-link">Solutions</a>
+          <a href="#" class="nav-link">Resources</a>
+          <a href="#" class="nav-link">Pricing</a>
+        </nav>
+
+        <!-- Logged out UI -->
+        <a href="#" class="logo-text" aria-label="BotDex home">
+          🤖 <span>BotDex</span>
+        </a>
+
+        <nav class="nav-right" aria-label="User navigation">
+          <div id="loggedOutUI">
+            <a href="/login" class="nav-link">Log In</a>
+            <button class="btn btn--primary">Get Started</button>
+          </div>
+
+          <!-- Logged in UI (hidden by default) -->
+          <div
+            id="loggedInUI"
+            style="display: none; align-items: center; gap: 10px"
+          >
+            <img
+              id="profilePic"
+              src=""
+              alt="Profile Picture"
+              style="width: 32px; height: 32px; border-radius: 50%"
+            />
+            <span id="username"></span>
+            <a href="/logout" class="nav-link">Logout</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <header class="header">
+        <h1>Choose Your Bot Companion</h1>
+        <p>Select the perfect AI assistant for your current needs</p>
+      </header>
+
+      <main class="bot-grid" id="botGrid">
+        <!-- Bot cards will be dynamically generated -->
+      </main>
+    </div>
+
+    <!-- Bot Modal -->
+    <div class="modal hidden" id="botModal">
+      <div class="modal__backdrop"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <div class="modal__bot-info">
+            <span class="modal__bot-icon" id="modalBotIcon"></span>
+            <h2 class="modal__bot-name" id="modalBotName"></h2>
+          </div>
+          <button
+            class="modal__close-button"
+            id="modalCloseButton"
+            aria-label="Close modal"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <p class="modal__message" id="modalMessage"></p>
+        </div>
+        <div class="modal__footer">
+          <button
+            class="btn btn--primary btn--full-width"
+            id="modalContinueButton"
+          >
+            Start Conversation
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+
+    <!-- Check whether user is logged in or not -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch("/api/user")
+          .then((res) => res.json())
+          .then((data) => {
+            const user = data.user;
+            const loggedOutUI = document.getElementById("loggedOutUI");
+            const loggedInUI = document.getElementById("loggedInUI");
+            const usernameSpan = document.getElementById("username");
+            const profilePic = document.getElementById("profilePic");
+
+            if (!loggedOutUI || !loggedInUI || !usernameSpan || !profilePic) {
+              console.error("One or more required DOM elements are missing");
+              return;
+            }
+
+            if (user) {
+              loggedOutUI.style.display = "none";
+              loggedInUI.style.display = "flex";
+
+              usernameSpan.textContent =
+                user.displayName || user.email || "User";
+
+              if (user.picture) {
+                profilePic.src = user.picture;
+              } else {
+                profilePic.src = "public/asset/bolt.png"; // optional fallback image
+              }
+            } else {
+              loggedOutUI.style.display = "flex";
+              loggedInUI.style.display = "none";
+            }
+          })
+          .catch((err) => {
+            console.error("Failed to fetch user info", err);
+          });
+      });
+    </script>
+  </body>
+</html>

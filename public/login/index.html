@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 100px;
+      }
+      .box {
+        display: inline-block;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2 id="title">Checking login status...</h2>
+
+      <!-- Shown only if logged out -->
+      <div id="login-box" class="hidden">
+        <p>You are not logged in.</p>
+        <a href="/auth/google">Login with Google</a>
+      </div>
+
+      <!-- Shown only if logged in -->
+      <div id="user-box" class="hidden">
+        <p>Welcome, <span id="username"></span>!</p>
+        <a href="/logout">Logout</a>
+        <br />
+        <a href="/">Home</a>
+      </div>
+    </div>
+
+    <script>
+      fetch("/api/user")
+        .then((res) => res.json())
+        .then((data) => {
+          const user = data.user;
+          const loginBox = document.getElementById("login-box");
+          const userBox = document.getElementById("user-box");
+          const usernameSpan = document.getElementById("username");
+          const title = document.getElementById("title");
+
+          if (user) {
+            // Logged in
+            console.log("user", user);
+            usernameSpan.textContent = user.displayName;
+            userBox.classList.remove("hidden");
+            title.textContent = "You're logged in!";
+          } else {
+            // Not logged in
+            loginBox.classList.remove("hidden");
+            title.textContent = "Please log in";
+          }
+        });
+    </script>
+  </body>
+</html>
