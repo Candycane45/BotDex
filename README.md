@@ -4,9 +4,12 @@
 
 ## Roles and Responsibilities
 - Back-end Development
+
   Hemanth and Roshan worked on the          chatbots and API
 - Front-end Development
+
   Cindy and Alex focused on the framework   building the skeleton and the idea        pitching.
+
   Harshitha focused on the css and the
   flashy aesthetics.
 ## Features
