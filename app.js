@@ -129,12 +129,17 @@ function createBotCard(bot) {
 }
 
 
-// Function to open the modal
-function openModal(botId, botName, botIcon, message) {
+// Function to open the modal - Updated to accept bot color
+function openModal(botId, botName, botIcon, message, botColor) {
     if (!modal) {
         console.error('Modal not initialized');
         return;
     }
+    
+    // Set the bot's color as CSS custom properties on the modal
+    modal.style.setProperty('--current-bot-color', botColor);
+    modal.style.setProperty('--current-bot-color-light', botColor + '20');
+    modal.style.setProperty('--current-bot-color-lighter', botColor + '15');
     
     modalBotIcon.innerHTML = `<img src="${botIcon}" alt="${botName}" class="bot-modal-icon" />`;
     modalBotName.textContent = botName;
@@ -143,11 +148,11 @@ function openModal(botId, botName, botIcon, message) {
     modal.classList.remove('hidden');
     document.body.classList.add('modal-open');
     
-    // Focus management for accessibility
     setTimeout(() => {
         modalCloseButton.focus();
     }, 100);
 }
+
 
 // Function to close the modal
 function closeModal() {
@@ -164,7 +169,8 @@ function handleKeydown(event) {
     }
 }
 
-// Function to handle bot button clicks
+
+// Function to handle bot button clicks - Updated to pass bot color
 function handleBotButtonClick(event) {
     const button = event.target;
     const botId = parseInt(button.getAttribute('data-bot-id'));
@@ -190,9 +196,9 @@ function handleBotButtonClick(event) {
     button.style.transform = 'scale(0.95)';
     button.style.opacity = '0.8';
     
-    // Open modal
+    // Open modal with bot's color - UPDATED LINE
     setTimeout(() => {
-        openModal(botId, botName, bot.icon, message);
+        openModal(botId, botName, bot.icon, message, bot.color);
         
         // Reset button appearance
         button.style.transform = '';
@@ -202,6 +208,7 @@ function handleBotButtonClick(event) {
     // Log the interaction
     console.log(`User initiated chat with ${botName} (ID: ${botId})`);
 }
+
 
 // Function to initialize modal elements and event listeners
 function initializeModal() {
