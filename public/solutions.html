@@ -3,24 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pricing - Bot Companion Dashboard</title>
+    <title>Solutions - Bot Companion Dashboard</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="pricing.css" />
-    <style>
-      canvas#cyberCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        width: 100vw;
-        height: 100vh;
-        background: black;
-      }
-    </style>
+    <link rel="stylesheet" href="solutions.css" />
   </head>
-  <body class="cyberpunk-theme">
-    <canvas id="cyberCanvas"></canvas>
-
+  <body>
     <header class="site-header">
       <div class="header-container">
         <nav class="nav-left" aria-label="Primary navigation">
@@ -57,66 +44,67 @@
       </div>
     </header>
 
-    <div class="container pricing-container">
+    <div class="container solutions-container">
       <header class="header">
-        <h1>Data Plans & Pricing</h1>
-        <p>Choose your access level. Connect to the network.</p>
+        <h1>Solutions for Every Need</h1>
+        <p>
+          Discover how our AI companions can help you in personal, professional,
+          and creative scenarios.
+        </p>
       </header>
 
-      <main class="pricing-grid">
-        <!-- Tier 1: Free -->
-        <div class="pricing-card">
-          <div class="card-header">
-            <h3>Free Tier</h3>
-            <p class="price"><span>$0</span>/month</p>
-          </div>
-          <ul class="features-list">
-            <li><span class="check">✓</span> Access to 3 Standard Bots</li>
-            <li><span class="check">✓</span> 1,000 Messages/Month</li>
-            <li><span class="check">✓</span> Standard Community Support</li>
-            <li><span class="cross">✗</span> No Conversation History</li>
-            <li><span class="cross">✗</span> No Advanced AI Models</li>
-          </ul>
-          <button class="btn-select-plan">Select Plan</button>
-        </div>
+      <main class="solutions-grid">
+        <!-- Solution 1: Personal Growth -->
+        <section class="solution-card card">
+          <div class="solution-icon">🌱</div>
+          <h2>Personal Growth</h2>
+          <p>
+            Utilize bots like the Wise Advisor and Zen Bot to foster
+            mindfulness, gain clarity on life decisions, and build better habits
+            for a more fulfilled life.
+          </p>
+          <a href="#" class="solution-link">Learn More &rarr;</a>
+        </section>
 
-        <!-- Tier 2: Pro (Recommended) -->
-        <div class="pricing-card recommended">
-          <div class="recommended-badge">Recommended</div>
-          <div class="card-header">
-            <h3>Pro Tier</h3>
-            <p class="price"><span>$15</span>/month</p>
-          </div>
-          <ul class="features-list">
-            <li><span class="check">✓</span> Access to All 7 Bots</li>
-            <li><span class="check">✓</span> 20,000 Messages/Month</li>
-            <li><span class="check">✓</span> Priority Email Support</li>
-            <li><span class="check">✓</span> 30-Day Conversation History</li>
-            <li><span class="check">✓</span> Access to Advanced AI Models</li>
-          </ul>
-          <button class="btn-select-plan">Select Plan</button>
-        </div>
+        <!-- Solution 2: Team & Workplace -->
+        <section class="solution-card card">
+          <div class="solution-icon">🏢</div>
+          <h2>Team & Workplace</h2>
+          <p>
+            Boost morale with the Roast Master, improve security awareness with
+            the CyberGuard Bot, and foster a supportive environment with the
+            Empathy Bot.
+          </p>
+          <a href="#" class="solution-link"
+            >Explore Workplace Solutions &rarr;</a
+          >
+        </section>
 
-        <!-- Tier 3: Enterprise -->
-        <div class="pricing-card">
-          <div class="card-header">
-            <h3>Enterprise</h3>
-            <p class="price"><span>Custom</span></p>
-          </div>
-          <ul class="features-list">
-            <li><span class="check">✓</span> Unlimited Bots & Messages</li>
-            <li><span class="check">✓</span> Dedicated 24/7 Support</li>
-            <li><span class="check">✓</span> Unlimited Conversation History</li>
-            <li><span class="check">✓</span> On-Premise Deployment Options</li>
-            <li><span class="check">✓</span> Custom Bot Development</li>
-          </ul>
-          <button class="btn-select-plan">Contact Sales</button>
-        </div>
+        <!-- Solution 3: Creative & Fun -->
+        <section class="solution-card card">
+          <div class="solution-icon">🎨</div>
+          <h2>Creative & Fun</h2>
+          <p>
+            Break creative blocks and find inspiration with our more playful
+            companions. The Meme Lord and Energy Mirror can spark new ideas and
+            bring joy to your day.
+          </p>
+          <a href="#" class="solution-link">Unleash Creativity &rarr;</a>
+        </section>
+
+        <!-- Solution 4: Digital Safety -->
+        <section class="solution-card card">
+          <div class="solution-icon">🛡️</div>
+          <h2>Digital Safety</h2>
+          <p>
+            Navigate the digital world with confidence. The CyberGuard Bot
+            provides actionable advice to protect your online identity and
+            secure your digital assets.
+          </p>
+          <a href="#" class="solution-link">Enhance Your Security &rarr;</a>
+        </section>
       </main>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
-    <script src="fog-bg.js"></script>
 
     <!-- Check whether user is logged in or not -->
     <script>
