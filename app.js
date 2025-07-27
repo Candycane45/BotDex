@@ -83,7 +83,7 @@ I'm here to understand and support you through whatever you're experiencing. I o
 
 Please tell me what's on your heart today.`,
 
-    4: `class="bot-message-icon"> Roast Master Bot locked and loaded!
+    4: `Roast Master Bot locked and loaded!
 
 Ready to deliver some witty burns and playful roasts! I'll keep it fun and clever while giving you the comedic reality check you're looking for.
 
@@ -136,7 +136,7 @@ function openModal(botId, botName, botIcon, message) {
         return;
     }
     
-    modalBotIcon.textContent = botIcon;
+    modalBotIcon.innerHTML = `<img src="${botIcon}" alt="${botName}" class="bot-modal-icon" />`;
     modalBotName.textContent = botName;
     modalMessage.textContent = message;
     

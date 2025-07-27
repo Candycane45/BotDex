@@ -1150,3 +1150,10 @@ select.form-control {
     height: auto;
 }
 
+.bot-modal-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px auto;
+}
