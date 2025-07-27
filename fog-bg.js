@@ -62,7 +62,7 @@ const fogPlane = new THREE.Mesh(geo, fogMaterial);
 scene.add(fogPlane);
 
 // === Star Layer ===
-const starCount = 800;
+const starCount = 150;
 const starGeo = new THREE.BufferGeometry();
 const pos = new Float32Array(starCount * 3);
 for (let i = 0; i < starCount; i++) {
@@ -100,7 +100,7 @@ const starMat = new THREE.ShaderMaterial({
 const stars = new THREE.Points(starGeo, starMat);
 scene.add(stars);
 
-// === Animation Loop ===
+
 function animate(t) {
   requestAnimationFrame(animate);
   let time = t * 0.001;
