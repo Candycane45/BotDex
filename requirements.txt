@@ -1,0 +1,22 @@
+Node.js Project Dependencies
+To install all required packages, copy and paste the following command into your terminal:
+npm install express @google/generative-ai dotenv cors passport google-auth-library sqlite3 sequelize express-session connect-session-sequelize
+
+--- Individual Packages ---
+Backend Framework
+express
+Google Generative AI Client
+@google/generative-ai
+Environment Variable Management
+dotenv
+Cross-Origin Resource Sharing
+cors
+Authentication
+passport
+google-auth-library
+Database
+sqlite3
+sequelize
+Session Management
+express-session
+connect-session-sequelize
