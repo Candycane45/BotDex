@@ -8,67 +8,71 @@
     <link rel="stylesheet" href="hover.css" />
 </head>
 <body>
-    <header class="site-header">
-    <div class="header-container">
-        
-        <nav class="nav-left" aria-label="Primary navigation">
-        <a href="#" class="nav-link">Product</a>
-        <a href="#" class="nav-link">Solutions</a>
-        <a href="#" class="nav-link">Resources</a>
-        <a href="#" class="nav-link">Pricing</a>
-        </nav>
+    <!-- Background canvas -->
+    <canvas id="bg"></canvas>
 
-        <a href="#" class="logo-text" aria-label="BotDex home">
-        🤖 <span>BotDex</span>
-        </a>
+    <!-- UI Layer -->
+    <div class="ui-layer">
+        <header class="site-header">
+            <div class="header-container">
+                <nav class="nav-left" aria-label="Primary navigation">
+                    <a href="#" class="nav-link">Product</a>
+                    <a href="#" class="nav-link">Solutions</a>
+                    <a href="#" class="nav-link">Resources</a>
+                    <a href="#" class="nav-link">Pricing</a>
+                </nav>
 
-        <nav class="nav-right" aria-label="User navigation">
-        <a href="#" class="nav-link">Log In</a>
-        <button class="btn btn--primary">Get Started</button>
-        </nav>
-        
-    </div>
-    </header>
+                <a href="#" class="logo-text" aria-label="BotDex home">
+                    🤖 <span>BotDex</span>
+                </a>
 
-
-    <div class="container">
-        <header class="header">
-            <h1>Choose Your Bot Companion</h1>
-            <p>Select the perfect AI assistant for your current needs</p>
+                <nav class="nav-right" aria-label="User navigation">
+                    <a href="#" class="nav-link">Log In</a>
+                    <button class="btn btn--primary">Get Started</button>
+                </nav>
+            </div>
         </header>
 
-        <main class="bot-grid" id="botGrid">
-            <!-- Bot cards will be dynamically generated -->
-        </main>
-    </div>
+        <div class="container">
+            <header class="header">
+                <h1>Choose Your Bot Companion</h1>
+                <p>Select the perfect AI assistant for your current needs</p>
+            </header>
 
-    <!-- Bot Modal -->
-    <div class="modal hidden" id="botModal">
-        <div class="modal__backdrop"></div>
-        <div class="modal__content">
-            <div class="modal__header">
-                <div class="modal__bot-info">
-                    <span class="modal__bot-icon" id="modalBotIcon"></span>
-                    <h2 class="modal__bot-name" id="modalBotName"></h2>
+            <main class="bot-grid" id="botGrid">
+                <!-- Bot cards will be dynamically generated -->
+            </main>
+        </div>
+
+        <!-- Bot Modal -->
+        <div class="modal hidden" id="botModal">
+            <div class="modal__backdrop"></div>
+            <div class="modal__content">
+                <div class="modal__header">
+                    <div class="modal__bot-info">
+                        <span class="modal__bot-icon" id="modalBotIcon"></span>
+                        <h2 class="modal__bot-name" id="modalBotName"></h2>
+                    </div>
+                    <button class="modal__close-button" id="modalCloseButton" aria-label="Close modal">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
                 </div>
-                <button class="modal__close-button" id="modalCloseButton" aria-label="Close modal">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <div class="modal__body">
-                <p class="modal__message" id="modalMessage"></p>
-            </div>
-            <div class="modal__footer">
-                <button class="btn btn--primary btn--full-width" id="modalContinueButton">
-                    Start Conversation
-                </button>
+                <div class="modal__body">
+                    <p class="modal__message" id="modalMessage"></p>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--primary btn--full-width" id="modalContinueButton">
+                        Start Conversation
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </div> <!-- End of UI Layer -->
 
     <script src="app.js"></script>
+    <script src="three-bg.js"></script>
 </body>
 </html>
