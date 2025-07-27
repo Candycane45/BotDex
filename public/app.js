@@ -157,6 +157,11 @@ function openModal(botId, botName, botIcon, message, botColor) {
   setTimeout(() => {
     modalCloseButton.focus();
   }, 100);
+
+  // ✅ Redirect to chat page when user clicks Continue
+  modalContinueButton.onclick = function () {
+    window.location.href = `/chat.html?botid=${botId}`;
+  };
 }
 
 // Function to close the modal
@@ -346,6 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Otherwise, render the homepage content
     renderBotCards();
     addInteractiveEffects();
+    initializeModal();
 
     setTimeout(() => {
       addInteractiveEffects();
@@ -362,7 +368,7 @@ async function sendChat() {
   console.log("User: ", userMessage);
 
   // todo: add to the ui user message
-  //   displayMessage("user", userMessage);
+  displayMessage("user", userMessage);
   conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
   // Clear input field
   chatInput.value = "";
@@ -372,9 +378,60 @@ async function sendChat() {
 
   // Display bot's message and add to history
   // todo: add to the ui bot message
-  // displayMessage("bot", botResponse);
+  displayMessage("bot", botResponse);
   conversationHistory.push({ role: "model", parts: [{ text: botResponse }] });
   console.log("BOT: ", botResponse);
+}
+
+// Function to display a message in the chat history
+function displayMessage(sender, message, iconUrl = null) {
+  const chatMessages = document.getElementById("chatMessages");
+
+  //   const chatHistory = document.getElementById("chatHistory");
+  //   const messageContainer = document.createElement("div");
+  //   messageContainer.classList.add("chat-message-container");
+  //   messageContainer.classList.add(
+  //     sender === "user" ? "user-message" : "bot-message"
+  //   );
+
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message", sender);
+    messageDiv.textContent = text;
+    messageDiv.setAttribute("tabindex", "0");
+    chatMessages.appendChild(messageDiv);
+
+    // Animate with GSAP
+    gsap.from(messageDiv, {
+      opacity: 0,
+      y: 20,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  //   if (sender === "bot" && iconUrl) {
+  if (sender === "bot") {
+    addMessage(message, "bot");
+
+    // const botIcon = document.createElement("img");
+    // botIcon.src = iconUrl;
+    // botIcon.alt = "Bot Icon";
+    // botIcon.classList.add("message-icon");
+    // messageContainer.appendChild(botIcon);
+  } else {
+    addMessage(message, "user");
+  }
+
+  //   const messageElement = document.createElement("div");
+  //   messageElement.classList.add("chat-message");
+  //   messageElement.textContent = message;
+  //   messageContainer.appendChild(messageElement);
+
+  //   chatHistory.appendChild(messageContainer);
+  //   chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom
 }
 
 // Function to send message to the bot and get a response

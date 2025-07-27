@@ -172,7 +172,7 @@
       <header class="site-header">
         <div class="header-container">
           <nav class="nav-left" aria-label="Primary navigation">
-            <a href="#" class="nav-link">Product</a>
+            <a href="index.html" class="nav-link">Product</a>
             <a href="solutions.html" class="nav-link">Solutions</a>
             <a href="resources.html" class="nav-link">Resources</a>
             <a href="pricing.html" class="nav-link">Pricing</a>
@@ -241,7 +241,7 @@
     </div>
 
     <script src="app.js"></script>
-
+    <!-- 
     <script>
       const chatMessages = document.getElementById("chatMessages");
       const chatForm = document.getElementById("chatForm");
@@ -310,7 +310,7 @@
       }
 
       userInput.focus();
-    </script>
+    </script> -->
 
     <!-- Get query param -->
     <script>
@@ -366,6 +366,17 @@
             console.error("Failed to fetch user info", err);
           });
       });
+    </script>
+    <script>
+      fetch("/api/user")
+        .then((res) => res.json())
+        .then((data) => {
+          const user = data.user;
+
+          if (!user) {
+            window.location.replace("\\");
+          }
+        });
     </script>
   </body>
 </html>
