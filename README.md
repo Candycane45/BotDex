@@ -1,6 +1,6 @@
 # Bot Companion Dashboard
 
-**Bot Companion Dashboard** is a full-stack web application that allows users to interact with a variety of AI-powered chatbots, each with a unique personality and purpose. The project demonstrates a modern web development architecture, separating the user interface (frontend) from the AI logic and API management (backend).
+**Bot Companion Dashboard** is a full-stack web application that allows users to interact with a variety of AI-powered chatbots, each with a unique personality and purpose. The project demonstrates a modern web development architecture, separating the user interface (frontend) from the AI logic and API management (backend). This version includes Google Authentication using Passport.js.
 
 ## Features
 
@@ -10,6 +10,7 @@
 * **Secure API Key Management**: The backend uses environment variables (`.env` file) to securely manage the Gemini API key, keeping it out of the frontend code.
 * **Prompt Logging**: All prompts sent to the AI by users are logged into a `prompt_log.txt` file on the server for monitoring and future analysis.
 * **Separated Frontend/Backend**: A robust architecture where the frontend (HTML/CSS/JS) is completely decoupled from the backend (Node.js), which is best practice for modern web applications.
+* **Google Authentication**: Users can log in using their Google account, powered by Passport.js.
 
 ## Tech Stack
 
@@ -23,6 +24,9 @@
     * **@google/generative-ai**: Official Google client library for the Gemini API.
     * **dotenv**: For managing environment variables (API keys).
     * **cors**: To enable secure communication between the frontend and backend.
+    * **Passport.js**: Authentication middleware for Node.js.
+    * **google-auth-library**: To verify Google ID tokens.
+    * **SQLite**: For the user database.
 * **AI Model**:
     * Google Gemini 1.5 Flash
 
@@ -33,14 +37,15 @@
 To run this project locally, you will need Node.js, npm, and Visual Studio Code installed.
 
 **1. Clone the Repository / Download the Files**
-   Ensure all project files (`index.html`, `style.css`, `app.js`, `server.js`, `package.json`) are in the same directory.
+   Ensure all project files (`index.html`, `style.css`, `app.js`, `server.js`, `package.json`, `database.sqlite`) are in the same directory.
 
 **2. Create the Environment File**
-   In the root of the project directory, create a new file named `.env`. This file will store your secret API key. Add the following line to it:
+   In the root of the project directory, create a new file named `.env`. This file will store your secret API keys. Add the following lines to it:
    ```
    GEMINI_API_KEY=YOUR_API_KEY_HERE
+   GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID_HERE
    ```
-   Replace `YOUR_API_KEY_HERE` with your actual Gemini API key from Google AI Studio.
+   Replace `YOUR_API_KEY_HERE` with your actual Gemini API key from Google AI Studio and `YOUR_GOOGLE_CLIENT_ID_HERE` with your Google Client ID from the Google Cloud Console.
 
 **3. Install Dependencies**
    Open a terminal in the project directory and run the following command to install all the necessary backend packages listed in `package.json`:
@@ -54,15 +59,6 @@ To run this project locally, you will need Node.js, npm, and Visual Studio Code 
    node server.js
    ```
    You should see the message: `Server is running on http://localhost:3000`. Keep this terminal window open.
-
-**5. Run the Frontend Server**
-   This project uses the **Live Server** extension in Visual Studio Code to serve the frontend.
-   * If you don't have it, install the "Live Server" extension from the VS Code marketplace.
-   * In VS Code, right-click on the `index.html` file in the file explorer.
-   * Select **"Open with Live Server"** from the context menu.
-
-**6. Open the Application**
-   A new tab will automatically open in your default web browser with an address like `http://127.0.0.1:5500`. The application should now be fully functional.
 
 ---
 
@@ -78,6 +74,3 @@ Developing this project highlighted several key concepts and common challenges i
 
 3.  **Asynchronous Operations**: Interacting with an external API (like Gemini) is an asynchronous operation. The program can't just wait for the response; it needs to handle the delay.
     * **Lesson Learned**: `async/await` syntax is a clean and powerful way to manage this. The `sendMessage` function in `app.js` is declared `async` so it can `await` the `fetch` call to the backend. This prevents the UI from freezing and allows for features like a "typing..." indicator.
-
-4.  **CORS (Cross-Origin Resource Sharing)**: When running the frontend and backend on different ports (e.g., `:5500` and `:3000`), browsers block requests by default for security.
-    * **Lesson Learned**: The `cors` package on the Express server is essential. It tells the browser, "It's okay for the website at this address to make requests to me." Without it, no communication would be possible.
