@@ -1,0 +1,8 @@
+[2025-07-27T19:31:18.934Z] [CyberGuard Bot] User Prompt: "asdfasdf"
+---
+[2025-07-27T19:37:01.171Z] [CyberGuard Bot] User Prompt: "Hi"
+---
+[2025-07-27T19:37:09.688Z] [CyberGuard Bot] User Prompt: "How are you"
+---
+[2025-07-27T19:39:21.351Z] [CyberGuard Bot] User Prompt: "Hey how are you"
+---

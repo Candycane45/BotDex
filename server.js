@@ -180,9 +180,11 @@ app.post("/api/chat", async (req, res) => {
 
     // Validate request body
     if (!botId || !message || !Array.isArray(history)) {
-      return res.status(400).json({
-        error: "Invalid request: botId, message, and history are required.",
-      });
+      return res
+        .status(400)
+        .json({
+          error: "Invalid request: botId, message, and history are required.",
+        });
     }
 
     const persona = botPersonas[botId];
