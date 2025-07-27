@@ -1253,7 +1253,7 @@ select.form-control {
 :root {
   --color-primary: #5c7aea; /* soothing indigo */
   --color-primary-hover: #7f92f7;
-  --color-background-header: linear-gradient(90deg, #506569, #066475, #7cc4fe);
+  --color-background-header: linear-gradient(90deg, #50cbe4, #3ab9cf, #8fc6f3);
   --color-text-dark: #95c0eb;
   --color-text-light: #f1f5f9;
   --color-nav-link: #334155;
@@ -1316,7 +1316,7 @@ select.form-control {
 .logo-text {
   font-weight: 800;
   font-size: 1.5rem;
-  color: var(--color-text-dark);
+  color:rgb(5, 22, 65);
   font-family: 'Manrope', sans-serif;
   user-select: none;
   display: flex;
@@ -1330,7 +1330,7 @@ select.form-control {
 .logo-text span {
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--color-primary);
+  color: rgb(5, 22, 65);
 }
 
 .logo-text:hover,
