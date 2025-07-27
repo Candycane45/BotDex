@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bot Companion Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="hover.css" />
+  <style>
+    canvas#cyberCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="cyberCanvas"></canvas>
+
+  <header class="site-header">
+    <div class="header-container">
+      <nav class="nav-left" aria-label="Primary navigation">
+        <a href="#" class="nav-link">Product</a>
+        <a href="#" class="nav-link">Solutions</a>
+        <a href="#" class="nav-link">Resources</a>
+        <a href="#" class="nav-link">Pricing</a>
+      </nav>
+
+      <a href="#" class="logo-text" aria-label="BotDex home">
+        🤖 <span>BotDex</span>
+      </a>
+
+      <nav class="nav-right" aria-label="User navigation">
+        <a href="#" class="nav-link">Log In</a>
+        <button class="btn btn--primary">Get Started</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <header class="header">
+      <h1>Choose Your Bot Companion</h1>
+      <p>Select the perfect AI assistant for your current needs</p>
+    </header>
+
+    <main class="bot-grid" id="botGrid">
+      <!-- Bot cards will be dynamically generated -->
+    </main>
+  </div>
+
+  <!-- Bot Modal -->
+  <div class="modal hidden" id="botModal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <div class="modal__header">
+        <div class="modal__bot-info">
+          <span class="modal__bot-icon" id="modalBotIcon"></span>
+          <h2 class="modal__bot-name" id="modalBotName"></h2>
+        </div>
+        <button class="modal__close-button" id="modalCloseButton" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="modal__message" id="modalMessage"></p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--primary btn--full-width" id="modalContinueButton">
+          Start Conversation
+        </button>
+      </div>
+    </div>
+  </div>
+
+<script src="https://unpkg.com/three@0.148.0/build/three.min.js"></script>
+<script src="app.js"></script>
+<script src="fog-bg.js"></script>
+</body>
+</html>
