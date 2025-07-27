@@ -14,7 +14,7 @@ const botsData = {
       "name": "Wise Advisor Bot", 
       "title": "Life Guidance Counselor",
       "description": "Provides thoughtful advice and guidance for life decisions",
-      "icon": "🦉",
+      "icon": "assets/wise-owl.png",
       "color": "#3498db"
     },
     {
@@ -22,7 +22,7 @@ const botsData = {
       "name": "Empathy Bot",
       "title": "Compassionate Listener", 
       "description": "Listens to your problems with understanding and compassion",
-      "icon": "💙",
+      "icon": "assets/empathy-bot.png",
       "color": "#9b59b6"
     },
     {
@@ -30,7 +30,7 @@ const botsData = {
       "name": "Roast Master Bot",
       "title": "Witty Roast Specialist",
       "description": "Listens to you and delivers clever roasts in return",
-      "icon": "🔥",
+      "icon": "assets/roast-master.png",
       "color": "#e67e22"
     },
     {
@@ -38,7 +38,7 @@ const botsData = {
       "name": "Energy Mirror Bot",
       "title": "Vibe Synchronizer",
       "description": "Matches and amplifies your current energy level perfectly",
-      "icon": "⚡",
+      "icon": "assets/bolt.png",
       "color": "#f39c12"
     },
     {
@@ -46,7 +46,7 @@ const botsData = {
       "name": "Zen Bot",
       "title": "Meditation & Calm Guide",
       "description": "Helps you find calm, inner peace, and mindfulness",
-      "icon": "🧘",
+      "icon": "assets/zen.png",
       "color": "#27ae60"
     },
     {
@@ -54,7 +54,7 @@ const botsData = {
       "name": "Meme Lord Bot",
       "title": "Professional Meme Curator", 
       "description": "Responds to everything with perfectly matched memes",
-      "icon": "😂",
+      "icon": "assets/meme-lord.png",
       "color": "#8e44ad"
     }
   ]
